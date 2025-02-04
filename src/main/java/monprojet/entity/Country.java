@@ -28,6 +28,6 @@ public class Country {
     @OneToMany(mappedBy="country")
     // Lombok https://www.projectlombok.org/features/ToString
     @ToString.Exclude // On ne veut pas inclure la liste des villes dans le toString
-    // Sinon récursivité infinie
+    // Sinon récursivité infinie, on controle le @Lombok de City car elle affiche ville avec son pays, sa population, etc et le pays réaffiche tout ca avec la ville et c'est infini eft
     private List<City> cities = new ArrayList<>();
 }

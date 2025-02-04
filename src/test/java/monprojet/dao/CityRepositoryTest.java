@@ -1,6 +1,7 @@
 package monprojet.dao;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,10 @@ public class CityRepositoryTest {
     private CityRepository cityDAO;
 
     @Test
-    void onTrouveLePaysDesVilles() {
-        log.info("On vérifie que les pays des villes sont bien récupérés");
+    void onTrouveLesVillesDesPays() {
+        log.info("On vérifie que les villes d'un pays sont accessibles");
         City paris = cityDAO.findByName("Paris");
         Country france = countryDAO.findById(1).orElseThrow();
-        assertEquals(france, paris.getCountry(), "Paris est en France");
+        assertTrue( france.getCities().contains(paris), "France contient Paris");
     }
 }
